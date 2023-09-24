@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WatchCatalog</string>
+    <string name="action_settings">Settings</string>
+    <string name="add">Add new watch to catalog</string>
+</resources>
