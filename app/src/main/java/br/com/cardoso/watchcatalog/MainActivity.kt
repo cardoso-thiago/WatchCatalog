@@ -1,11 +1,16 @@
 package br.com.cardoso.watchcatalog
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.cardoso.watchcatalog.adapter.ImageGalleryAdapter
+import br.com.cardoso.watchcatalog.db.WatchDb
+import br.com.cardoso.watchcatalog.listener.FabButtonListener
 import br.com.cardoso.watchcatalog.model.Watch
+import br.com.cardoso.watchcatalog.utils.WatchCatalogUtils
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         val fab: View = findViewById(R.id.fab)
-        fab.setOnClickListener(FabButtonListener(this, adapter))
+        fab.setOnClickListener(FabButtonListener(this, recyclerView))
+
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
+            WatchCatalogUtils.getInfoAndAddWatchFromSharedText(this, it, recyclerView)
+        }
     }
 }

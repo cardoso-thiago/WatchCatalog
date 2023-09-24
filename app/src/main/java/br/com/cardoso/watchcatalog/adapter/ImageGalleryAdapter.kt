@@ -1,10 +1,11 @@
-package br.com.cardoso.watchcatalog
+package br.com.cardoso.watchcatalog.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.cardoso.watchcatalog.R
 import br.com.cardoso.watchcatalog.model.Watch
 import com.bumptech.glide.Glide
 

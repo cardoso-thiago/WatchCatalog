@@ -1,15 +1,17 @@
-package br.com.cardoso.watchcatalog
+package br.com.cardoso.watchcatalog.db
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 import br.com.cardoso.watchcatalog.model.Watch
 
-class WatchDb(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSION) {
+class WatchDb(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        val sql = ("CREATE TABLE $TABLE ($ID integer primary key autoincrement, $WATCH_LINK text, $WATCH_IMAGE_LINK text)")
+        val sql =
+            ("CREATE TABLE $TABLE ($ID integer primary key autoincrement, $WATCH_LINK text unique, $WATCH_IMAGE_LINK text)")
         db.execSQL(sql)
     }
 
@@ -18,12 +20,12 @@ class WatchDb(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSI
         onCreate(db)
     }
 
-    fun addNewWatch(watchLink: String, watchImageLink: String) {
+    fun addNewWatch(watchLink: String, watchImageLink: String): Long {
         val values = ContentValues().apply {
             put(WATCH_LINK, watchLink)
             put(WATCH_IMAGE_LINK, watchImageLink)
         }
-        this.writableDatabase.insert(TABLE, null, values)
+        return this.writableDatabase.insert(TABLE, null, values)
     }
 
     fun getAllWatches(): MutableList<Watch> {
@@ -48,6 +50,6 @@ class WatchDb(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSI
         const val ID = "_id"
         const val WATCH_LINK = "watch_link"
         const val WATCH_IMAGE_LINK = "watch_image_link"
-        const val VERSION = 4
+        const val VERSION = 5
     }
 }

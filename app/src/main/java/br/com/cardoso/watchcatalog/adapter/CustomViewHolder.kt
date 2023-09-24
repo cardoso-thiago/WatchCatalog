@@ -1,4 +1,4 @@
-package br.com.cardoso.watchcatalog
+package br.com.cardoso.watchcatalog.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import br.com.cardoso.watchcatalog.R
 
 
 class CustomViewHolder(private val context: Context, itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
