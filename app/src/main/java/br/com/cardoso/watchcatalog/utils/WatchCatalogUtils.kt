@@ -17,7 +17,7 @@ import org.jsoup.Jsoup
 class WatchCatalogUtils {
 
     companion object {
-        const val LOG_TAG = "WatchCatalog"
+        private const val LOG_TAG = "WatchCatalog"
 
         fun getInfoAndAddWatchFromSharedText(
             context: Context,

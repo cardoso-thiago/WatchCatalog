@@ -19,7 +19,7 @@ class ImageGalleryAdapter(
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val photoView: View = inflater.inflate(R.layout.item_photo, parent, false)
-        return CustomViewHolder(context, photoView)
+        return CustomViewHolder(context, photoView, this)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {

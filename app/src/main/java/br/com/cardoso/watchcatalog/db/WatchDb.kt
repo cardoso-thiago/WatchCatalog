@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 import br.com.cardoso.watchcatalog.model.Watch
 
-class WatchDb(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSION) {
+class WatchDb(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
         val sql =
@@ -42,6 +42,10 @@ class WatchDb(private val context: Context) : SQLiteOpenHelper(context, DB_NAME,
         cursor.close()
         db.close()
         return watches
+    }
+
+    fun deleteWatchFromLink(watchLink: String) {
+        this.writableDatabase.delete(TABLE, "$WATCH_LINK=?", arrayOf(watchLink))
     }
 
     companion object {
